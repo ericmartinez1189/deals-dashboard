@@ -25,7 +25,7 @@ def get_deals_from_sheets():
 
 @st.cache_data
 def get_purch_from_sheets():
-    sheet_id_purch = "1yqwcodAe1Fypk3SdksajOIe_VAUPY27xaAOGyA4cFiE"
+    sheet_id_purch = os.environ['SHEET_ID_PURCH_LOG']
     df_purch_log_data = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{sheet_id_purch}/export?format=csv")
     # convert the 'ORDER (DATE)' column to datetime format
     df_purch_log_data['ORDER (DATE)'] = pd.to_datetime(df_purch_log_data['ORDER (DATE)'], format='%Y-%m-%d')
