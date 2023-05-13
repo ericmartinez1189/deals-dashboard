@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 import plotly.express as px
+import os
 
 st.set_page_config(page_title="Deals Dashboard",
                    page_icon=":bar_chart:",
@@ -9,10 +10,10 @@ st.set_page_config(page_title="Deals Dashboard",
 
 @st.cache_data
 def get_deals_from_sheets():
-    sheet_id_deccy = "12vPBs7cNL4TClKulDlAv151KdPGiyNI5Trt34-AgwfA"
+    sheet_id_deccy = os.environ['SHEET_ID_VA_DECCY']
     df_deccy = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{sheet_id_deccy}/export?format=csv")
 
-    sheet_id_liezel = "1zhYg3dkc5-9aI96vQ5rjsGMRN2gf2hQh7lX4CPrSzQ4"
+    sheet_id_liezel = os.environ['SHEET_ID_VA_LIEZEL']
     df_liezel = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{sheet_id_liezel}/export?format=csv")
 
     # add a new column with the same value for each row
